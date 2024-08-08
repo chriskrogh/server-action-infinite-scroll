@@ -33,7 +33,6 @@ export const List: React.FC<Props> = ({ initialData }) => {
   const { ref, inView } = useInView();
   useEffect(() => {
     if (inView) {
-      console.log("fetchNextPage");
       fetchNextPage();
     }
   }, [fetchNextPage, inView]);
@@ -47,6 +46,7 @@ export const List: React.FC<Props> = ({ initialData }) => {
     <>
       {items.map((item, index) => (
         <Fragment key={index}>
+          {/* ReactNodes rendered on the server! */}
           {item}
           {index === items.length - 3 && (
             <div ref={ref} className="invisible" />
